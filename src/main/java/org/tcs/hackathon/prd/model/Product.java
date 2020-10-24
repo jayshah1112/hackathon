@@ -7,13 +7,7 @@ import io.quarkus.mongodb.panache.PanacheMongoEntity;
 
 @MongoEntity(collection = "Product")
 public class Product extends PanacheMongoEntity {
-	//public long id;
-	/*public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}*/
+	
 	public String getSku() {
 		return sku;
 	}
@@ -32,68 +26,68 @@ public class Product extends PanacheMongoEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<String> getAvailableSize() {
-		return availableSize;
-	}
-	public void setAvailableSize(List<String> availableSize) {
-		this.availableSize = availableSize;
-	}
-	public String getStyle() {
-		return style;
-	}
-	public void setStyle(String style) {
-		this.style = style;
-	}
+	
+	
 	public double getPrice() {
 		return price;
 	}
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getInstallments() {
-		return installments;
-	}
-	public void setInstallments(int installments) {
-		this.installments = installments;
-	}
-	public String getCurrencyId() {
-		return currencyId;
-	}
-	public void setCurrencyId(String currencyId) {
-		this.currencyId = currencyId;
-	}
-	public String getCurrencyFormat() {
-		return currencyFormat;
-	}
-	public void setCurrencyFormat(String currencyFormat) {
-		this.currencyFormat = currencyFormat;
-	}
+	
+	
 	public boolean isFreeShipping() {
 		return isFreeShipping;
 	}
 	public void setFreeShipping(boolean isFreeShipping) {
 		this.isFreeShipping = isFreeShipping;
 	}
-	public String sku;
-	public String title;
-	public String description;
-	public List<String> availableSize;
-	public String style;
-	public double price;
-	public int installments;
-	public String currencyId;
-	public String currencyFormat;
+	private String sku;
+	private String title;
+	private String description;
+	
+	private double price;
+	
 	public boolean isFreeShipping;
 	
-	public static Product findByTitle(String title) {
-        return find("title", title).firstResult();
+	private String category;
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public int getInventory() {
+		return inventory;
+	}
+	public void setInventory(int inventory) {
+		this.inventory = inventory;
+	}
+	private int inventory;
+	
+	
+	public static List<Product> findByTitle(String title) {
+        //return find("title", title).firstResult();
+        //return find(" {'title':{$in: [?1]}}",title).list();
+		return find("title like ?1",title).list();
+    }
+	
+	public static List<Product> findByCategory(String category) {
+		//System.out.println("Cateogry is " + category);
+        return find("category", category).list();
+        
     }
 
 	/*public static Product findById(String id) {
         return find("id", id).firstResult();
     }*/
 	
-	
+	/* Following variables are not needed will be used in future*/
+	//public int installments;
+		//public String currencyId;
+		//public String currencyFormat;
+		//private List<String> availableSize;
+	    //public String style;
 	
 	
 }

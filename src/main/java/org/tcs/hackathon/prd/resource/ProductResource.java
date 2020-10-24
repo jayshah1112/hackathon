@@ -20,7 +20,7 @@ import org.tcs.hackathon.prd.model.Product;
 @Produces("application/json")
 public class ProductResource {
 	
-	  @GET
+	    @GET
 	    public List<Product> list() {
 	        return Product.listAll();
 	    }
@@ -45,11 +45,19 @@ public class ProductResource {
 
 
 	    @GET
-	    @Path("/search/{title}")
-	    public Product search(@PathParam("title") String title) {
+	    @Path("/search/title/{title}")
+	    public List<Product> searchTitle(@PathParam("title") String title) {
 	        return Product.findByTitle(title);
 	    }
-
+	    
+	    @GET
+	    @Path("/search/cat/{category}")
+	    public List<Product> searchCateogry(@PathParam("category") String category) {
+	        return Product.findByCategory(category);
+	    }
+	    
+	    
+	    
 	    @GET
 	    @Path("/count")
 	    public Long count() {
