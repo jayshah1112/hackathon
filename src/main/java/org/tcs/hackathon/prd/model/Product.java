@@ -2,12 +2,25 @@ package org.tcs.hackathon.prd.model;
 
 import java.util.List;
 
+import org.bson.codecs.pojo.annotations.BsonId;
+
 import io.quarkus.mongodb.panache.MongoEntity;
-import io.quarkus.mongodb.panache.PanacheMongoEntity;
+import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
 
 @MongoEntity(collection = "Product")
-public class Product extends PanacheMongoEntity {
+public class Product extends PanacheMongoEntityBase  {
 	
+	
+	@BsonId
+	private int itemId;
+	
+	
+	public int getItemId() {
+		return itemId;
+	}
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
 	public String getSku() {
 		return sku;
 	}
