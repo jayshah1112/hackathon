@@ -22,7 +22,7 @@ public class CORSFilter implements ContainerResponseFilter {
         
         headers.putSingle("Access-Control-Allow-Origin", "*");
         headers.putSingle("Access-Control-Allow-Headers","*");
-        System.out.print("Bhai mere bhai mere : " + responseContext.getHeaders());
+        
     }
 	
 }
