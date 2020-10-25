@@ -90,6 +90,11 @@ public class Product extends PanacheMongoEntityBase  {
         return find("category", category).list();
         
     }
+	
+	public static Product findByItemId(int itemId) {
+		//System.out.println("Cateogry is " + category);
+        return find("_id", itemId).firstResult();
+    }
 
 	/*public static Product findById(String id) {
         return find("id", id).firstResult();

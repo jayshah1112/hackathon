@@ -27,8 +27,8 @@ public class ProductResource {
 
 	    @GET
 	    @Path("/{id}")
-	    public Product get(@PathParam("id") String id) {
-	        return Product.findById(new ObjectId(id));
+	    public Product get(@PathParam("id") int id) {
+	        return Product.findByItemId(id);
 	    }
 
 	    @POST
