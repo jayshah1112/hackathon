@@ -7,7 +7,7 @@ import org.bson.codecs.pojo.annotations.BsonId;
 import io.quarkus.mongodb.panache.MongoEntity;
 import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
 
-@MongoEntity(collection = "Product")
+@MongoEntity(collection = "HKProduct")
 public class Product extends PanacheMongoEntityBase  {
 	
 	
